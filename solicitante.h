@@ -18,7 +18,7 @@ public:
     Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repeir);
     ~Solicitante();
 
-    virtual void Imprimir() const = 0;
+    void Imprimir() const;
 
     const string &getLabSolicitado() const;
     void setLabSolicitado(const string &newLabSolicitado);

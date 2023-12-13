@@ -145,6 +145,12 @@ void cframe::on_btn_Enviar_clicked()
 
 {
     if(revisarTodoLleno()){
+        //string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repetir
+
+        //repetir: si es cero: no se repite.
+        //si es uno: repite diario
+        //si es dos: repite semanalmente
+
         limpiarAreas();
     }else{
         ui->lbl_LlenarTodo->setVisible(true);

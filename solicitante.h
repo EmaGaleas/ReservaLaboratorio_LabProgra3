@@ -11,11 +11,11 @@ class Solicitante
 private:
     //labSolicitado,clase,motivo,perfil(que es),nombreI,numeroI,correoI,cantidad,infoGrupo,equipo,fecha,horaInicio,HoraFin
     string labSolicitado,clase,motivo,perfil,nombreI,correoI, infoGrupo,equipo,fecha,horaInicio,horaFin;
-    int cantidad;
+    int cantidad,repetir;
     double numeroI;
 public:
     Solicitante();
-    Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin);
+    Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repeir);
     ~Solicitante();
 
     virtual void Imprimir() const = 0;

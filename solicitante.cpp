@@ -131,16 +131,6 @@ void Solicitante::setNumeroI(double newNumeroI)
     numeroI = newNumeroI;
 }
 
-int Solicitante::getRepetir() const
-{
-    return repetir;
-}
-
-void Solicitante::setRepetir(int newRepetir)
-{
-    repetir = newRepetir;
-}
-
 Solicitante::Solicitante()
 {
     this->labSolicitado="";

@@ -18,12 +18,7 @@ class cframe : public QMainWindow
     Q_OBJECT
 private:
 
-   // lista<Solicitante> labs;
-    //ATRIBUTOS PARA LA HERENCIA
-    string nombre,numerodecuenta,correo; //SOLICITANTES
-    string nombrelab,clase,motivo,frecuencia,equipo,fecha,horainicio,horafinal; //LABORATORIO
-    int cantidadintegrantes;
-
+    lista<Solicitante> solicitantes;
 public:
     cframe(QWidget *parent = nullptr);
     ~cframe();
@@ -40,6 +35,8 @@ private slots:
     void on_rb_Admin_clicked();
     void on_rb_EducacionC_clicked();
     void on_btn_Enviar_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::cframe *ui;

@@ -151,9 +151,51 @@ void cframe::on_btn_Enviar_clicked()
         //si es uno: repite diario
         //si es dos: repite semanalmente
 
+        string perfil = "";
+        int repetir = 0;
+        if(ui->rb_Alumno->isChecked()){
+            perfil = "Alumno";
+        }
+        else {
+            if(ui->rb_Admin->isChecked()){
+                perfil = "Administrativo";
+            }else if(ui->rb_Docente->isChecked()){
+                perfil = "Docente";
+            }else if(ui->rb_EducacionC->isChecked()){
+                perfil = "Educacion continua";
+            }
+            repetir= ui->cbox_Repetir->currentIndex();
+        }
+
+        string labSolicitado = ui->cbox_labSolicitado->currentText().toStdString();
+        string clase = ui->led_Clase->text().toStdString();
+        string motivo = ui->led_Motivo->text().toStdString();
+        //perfil ya esta definidio
+        string nombreI = ui->led_NombreIndi->text().toStdString();
+        double numeroI = ui->led_NumCuentaIndi->text().toDouble();
+        string correoI = ui->led_Correo->text().toStdString();
+        int cantidad = ui->spinB_NumeroIntegrantes->text().toInt();
+        string infoGrupo = ui->led_NombresGrupo->text().toStdString();
+        string equipo = ui->led_Equipo->text().toStdString();
+        string fecha = ui->dateEdit_Fecha->text().toStdString();
+        string horaInicio = ui->cbox_HoraInicio->currentText().toStdString();
+        string horaFin = ui->cbox_HoraFin->currentText().toStdString();
+
+        //string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repetir
+        std::cout<<labSolicitado<<clase<<motivo<<perfil<<nombreI<<numeroI<<correoI<<cantidad<<infoGrupo<<equipo<<fecha<<horaInicio<<horaFin<<repetir;
+        Solicitante soli(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fecha, horaInicio, horaFin, repetir);
+
+        // Insert the instance into the list
+        solicitantes.InsertarAlInicio(soli);
         limpiarAreas();
     }else{
         ui->lbl_LlenarTodo->setVisible(true);
     }
+}
+
+
+void cframe::on_pushButton_clicked()
+{
+    solicitantes.NewExcel();
 }
 

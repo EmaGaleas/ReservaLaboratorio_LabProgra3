@@ -10,7 +10,7 @@ class nodo{
     friend class cframe;
     private:
         tipo dato;
-        nodo<tipo*>*SigPtr;
+        nodo<tipo>*SigPtr;
     public:
         nodo(const tipo&);
         tipo getDato()const;

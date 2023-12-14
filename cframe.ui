@@ -234,8 +234,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1077</width>
-         <height>849</height>
+         <width>1081</width>
+         <height>860</height>
         </rect>
        </property>
        <property name="palette">
@@ -589,7 +589,7 @@
            <set>Qt::ImhNoTextHandles</set>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="tab_menu">
            <attribute name="title">
@@ -630,24 +630,8 @@
             <string>FORM</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_3">
-            <item row="9" column="2" colspan="2">
-             <widget class="QSpinBox" name="spinB_NumeroIntegrantes">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>35</number>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0">
-             <widget class="QLabel" name="lbl_Correo">
+            <item row="15" column="0">
+             <widget class="QLabel" name="lbl_Repetir">
               <property name="font">
                <font>
                 <family>Nirmala UI</family>
@@ -655,213 +639,37 @@
                </font>
               </property>
               <property name="text">
-               <string>Correo Electrónico Institucional (usuario@unitec.edu):</string>
+               <string>Repetir Reservación:</string>
               </property>
              </widget>
             </item>
-            <item row="17" column="0" colspan="5">
-             <widget class="QLabel" name="lbl_informativo">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
+            <item row="14" column="0">
+             <widget class="QLabel" name="lbl_HoraFin">
               <property name="font">
                <font>
                 <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
                </font>
               </property>
               <property name="text">
-               <string>*Se hará llegar la confirmación por correo electrónico institucional*</string>
+               <string>Seleccione un horario de Finalización:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" colspan="5">
+             <widget class="QLabel" name="lbl_Titulo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>22</pointsize>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>FORMULARIO</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignHCenter|Qt::AlignTop</set>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="0">
-             <widget class="QLabel" name="lbl_NombresGrupo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Nombre y números de cuenta de quienes lo utilizarán:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="14" column="1" colspan="4">
-             <widget class="QComboBox" name="cbox_HoraFin">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>08:10</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>09:55</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>11:15</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>13:20</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>14:40</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>16:00</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>17:20</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>18:40</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>20:00</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="10" column="1" colspan="4">
-             <widget class="QLineEdit" name="led_NombresGrupo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QRadioButton" name="rb_Alumno">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>9</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Alumno</string>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="0">
-             <widget class="QLabel" name="lbl_Fecha">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Fecha de Reservación:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="1" colspan="4">
-             <widget class="QLineEdit" name="led_NombreIndi">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="lbl_Lab">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Laboratorio Solicitado:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1" colspan="4">
-             <widget class="QLineEdit" name="led_Motivo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="0">
-             <widget class="QLabel" name="lbl_Equipo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Equipo(s) que utilizarán:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="1" colspan="4">
-             <widget class="QComboBox" name="cbox_Repetir">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>Nunca</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Semanal</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>A diario</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="6" column="0">
-             <widget class="QLabel" name="lb_Nombre1">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Nombre Completo:</string>
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
@@ -875,217 +683,6 @@
               </property>
               <property name="text">
                <string>Motivo del uso del laboratorio:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="0" colspan="2">
-             <widget class="QLabel" name="lbl_Integrantes">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Cantidad de Integrantes de Grupo:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1" colspan="4">
-             <widget class="QLineEdit" name="led_Clase">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="0">
-             <widget class="QLabel" name="lbl_NumCuenta">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Número de Cuenta:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="1" colspan="4">
-             <widget class="QComboBox" name="cbox_HoraInicio">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>06:45</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>08:10</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>09:55</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>11:15</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>13:20</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>14:40</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>16:00</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>17:20</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>18:40</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>20:00</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="5" column="3">
-             <widget class="QRadioButton" name="rb_EducacionC">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>9</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Educacion Continua</string>
-              </property>
-             </widget>
-            </item>
-            <item row="11" column="1" colspan="4">
-             <widget class="QLineEdit" name="led_Equipo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-            <item row="12" column="1" colspan="4">
-             <widget class="QDateEdit" name="dateEdit_Fecha">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="maximumDateTime">
-               <datetime>
-                <hour>23</hour>
-                <minute>59</minute>
-                <second>59</second>
-                <year>2024</year>
-                <month>12</month>
-                <day>31</day>
-               </datetime>
-              </property>
-              <property name="minimumDateTime">
-               <datetime>
-                <hour>0</hour>
-                <minute>0</minute>
-                <second>0</second>
-                <year>2023</year>
-                <month>12</month>
-                <day>11</day>
-               </datetime>
-              </property>
-              <property name="minimumDate">
-               <date>
-                <year>2023</year>
-                <month>12</month>
-                <day>11</day>
-               </date>
-              </property>
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="lbl_Clase">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Clase para la cuál requiere el uso del laboratorio:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0" rowspan="2">
-             <widget class="QLabel" name="lbl_Perfil">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Perfil del Solicitante:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="0">
-             <widget class="QLabel" name="lbl_HoraInicio">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Seleccione un horario de Inicio: </string>
-              </property>
-             </widget>
-            </item>
-            <item row="16" column="0" colspan="5">
-             <widget class="QPushButton" name="btn_Enviar">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>14</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>ENVIAR SOLICITUD</string>
               </property>
              </widget>
             </item>
@@ -1194,8 +791,106 @@
               </item>
              </widget>
             </item>
-            <item row="4" column="3">
-             <widget class="QRadioButton" name="rb_Admin">
+            <item row="11" column="0">
+             <widget class="QLabel" name="lbl_Equipo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Equipo(s) que utilizarán:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="1" colspan="4">
+             <widget class="QComboBox" name="cbox_HoraInicio">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <item>
+               <property name="text">
+                <string>06:45</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>08:10</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>09:55</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>11:15</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>13:20</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>14:40</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>16:00</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>17:20</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>18:40</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>20:00</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="15" column="1" colspan="4">
+             <widget class="QComboBox" name="cbox_Repetir">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <item>
+               <property name="text">
+                <string>Nunca</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Semanal</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>A diario</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="5" column="3">
+             <widget class="QRadioButton" name="rb_EducacionC">
               <property name="font">
                <font>
                 <family>Nirmala UI</family>
@@ -1203,40 +898,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Administrativo</string>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="1" colspan="4">
-             <widget class="QLineEdit" name="led_NumCuentaIndi">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-            <item row="14" column="0">
-             <widget class="QLabel" name="lbl_HoraFin">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Seleccione un horario de Finalización:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="1" colspan="4">
-             <widget class="QLineEdit" name="led_Correo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>10</pointsize>
-               </font>
+               <string>Educacion Continua</string>
               </property>
              </widget>
             </item>
@@ -1253,26 +915,8 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="0" colspan="5">
-             <widget class="QLabel" name="lbl_Titulo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>22</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>FORMULARIO</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="0">
-             <widget class="QLabel" name="lbl_Repetir">
+            <item row="1" column="0">
+             <widget class="QLabel" name="lbl_Lab">
               <property name="font">
                <font>
                 <family>Nirmala UI</family>
@@ -1280,11 +924,292 @@
                </font>
               </property>
               <property name="text">
-               <string>Repetir Reservación:</string>
+               <string>Laboratorio Solicitado:</string>
               </property>
              </widget>
             </item>
-            <item row="18" column="0" colspan="5">
+            <item row="10" column="1" colspan="4">
+             <widget class="QLineEdit" name="led_NombresGrupo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="2" colspan="2">
+             <widget class="QSpinBox" name="spinB_NumeroIntegrantes">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>35</number>
+              </property>
+             </widget>
+            </item>
+            <item row="17" column="0" colspan="5">
+             <widget class="QPushButton" name="btn_Enviar">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>14</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>ENVIAR SOLICITUD</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" rowspan="2">
+             <widget class="QLabel" name="lbl_Perfil">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Perfil del Solicitante:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1" colspan="4">
+             <widget class="QLineEdit" name="led_NumCuentaIndi">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="1" colspan="4">
+             <widget class="QComboBox" name="cbox_HoraFin">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <item>
+               <property name="text">
+                <string>08:10</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>09:55</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>11:15</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>13:20</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>14:40</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>16:00</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>17:20</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>18:40</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>20:00</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="3" column="1" colspan="4">
+             <widget class="QLineEdit" name="led_Motivo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="QRadioButton" name="rb_Admin">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Administrativo</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="lbl_Correo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Correo Electrónico Institucional (usuario@unitec.edu):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="lbl_Clase">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Clase para la cuál requiere el uso del laboratorio:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="lb_Nombre1">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Nombre Completo:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QRadioButton" name="rb_Alumno">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Alumno</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="QLabel" name="lbl_NumCuenta">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Número de Cuenta:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="0">
+             <widget class="QLabel" name="lbl_Fecha">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Fecha de Reservación:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="1" colspan="4">
+             <widget class="QLineEdit" name="led_Equipo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="1" colspan="4">
+             <widget class="QDateEdit" name="dateEdit_Fecha">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="maximumDateTime">
+               <datetime>
+                <hour>5</hour>
+                <minute>59</minute>
+                <second>59</second>
+                <year>2025</year>
+                <month>1</month>
+                <day>1</day>
+               </datetime>
+              </property>
+              <property name="minimumDateTime">
+               <datetime>
+                <hour>6</hour>
+                <minute>0</minute>
+                <second>0</second>
+                <year>2023</year>
+                <month>12</month>
+                <day>11</day>
+               </datetime>
+              </property>
+              <property name="minimumDate">
+               <date>
+                <year>2023</year>
+                <month>12</month>
+                <day>11</day>
+               </date>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="0">
+             <widget class="QLabel" name="lbl_NombresGrupo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Nombre y números de cuenta de quienes lo utilizarán:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="19" column="0" colspan="5">
              <widget class="QLabel" name="lbl_LlenarTodo">
               <property name="font">
                <font>
@@ -1297,6 +1222,87 @@
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" colspan="4">
+             <widget class="QLineEdit" name="led_Clase">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="0" colspan="2">
+             <widget class="QLabel" name="lbl_Integrantes">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Cantidad de Integrantes de Grupo:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="18" column="0" colspan="5">
+             <widget class="QLabel" name="lbl_informativo">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+               </font>
+              </property>
+              <property name="text">
+               <string>*Se hará llegar la confirmación por correo electrónico institucional*</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignHCenter|Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1" colspan="4">
+             <widget class="QLineEdit" name="led_Correo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="0">
+             <widget class="QLabel" name="lbl_HoraInicio">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Seleccione un horario de Inicio: </string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1" colspan="4">
+             <widget class="QLineEdit" name="led_NombreIndi">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="0">
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>AGREGAR</string>
               </property>
              </widget>
             </item>
@@ -1317,7 +1323,7 @@
      <x>0</x>
      <y>0</y>
      <width>1101</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuRESERVACION_LABORATORIO">

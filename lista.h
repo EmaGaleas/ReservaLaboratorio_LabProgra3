@@ -41,6 +41,12 @@ void lista<tipo>::NewExcel()
         File << "Laboratorio Solicitado\tClase\tMotivo\tPerfil\tNombreI\tNumeroI\tCorreoI\tCantidad\tInfoGrupo\tEquipo\tFecha\tHora de Inicio\tHora de Finalizacion\tRepeticion\n";
         for ( nodo< tipo > *actPtr = raizPtr; actPtr!=0; actPtr = actPtr->SigPtr )
         {
+            string repetir = "NUNCA";
+            if((actPtr->dato).getRepetir()==1){
+                repetir = "A DIARIO";
+            }else if((actPtr->dato).getRepetir()==2){
+                repetir = "SEMANALMENTE";
+            }
             File <<(actPtr->dato).getLabSolicitado()<<"\t"
                  <<(actPtr->dato).getClase()<<"\t"
                  <<(actPtr->dato).getMotivo()<<"\t"
@@ -54,7 +60,7 @@ void lista<tipo>::NewExcel()
                  <<(actPtr->dato).getFecha()<<"\t"
                  <<(actPtr->dato).getHoraInicio()<<"\t"
                  <<(actPtr->dato).getHoraFin()<<"\t"
-                 <<(actPtr->dato).getRepetir()<<"\t"
+                 <<repetir<<"\t"
                  <<"\n";
         }
         File.close();

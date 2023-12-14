@@ -41,20 +41,20 @@ void lista<tipo>::NewExcel()
         File << "Laboratorio Solicitado\tClase\tMotivo\tPerfil\tNombreI\tNumeroI\tCorreoI\tCantidad\tInfoGrupo\tEquipo\tFecha\tHora de Inicio\tHora de Finalizacion\tRepeticion\n";
         for ( nodo< tipo > *actPtr = raizPtr; actPtr!=0; actPtr = actPtr->SigPtr )
         {
-            File <<(actPtr->dato).getLabSolicitado()
-                 <<(actPtr->dato).getClase()
-                 <<(actPtr->dato).getMotivo()
-                 <<(actPtr->dato).getPerfil()
-                 <<(actPtr->dato).getNombreI()
-                 <<(actPtr->dato).getNumeroI()
-                 <<(actPtr->dato).getCorreoI()
-                 <<(actPtr->dato).getCantidad()
-                 <<(actPtr->dato).getInfoGrupo()
-                 <<(actPtr->dato).getEquipo()
-                 <<(actPtr->dato).getFecha()
-                 <<(actPtr->dato).getHoraInicio()
-                 <<(actPtr->dato).getHoraFin()
-                 <<""
+            File <<(actPtr->dato).getLabSolicitado()<<"\t"
+                 <<(actPtr->dato).getClase()<<"\t"
+                 <<(actPtr->dato).getMotivo()<<"\t"
+                 <<(actPtr->dato).getPerfil()<<"\t"
+                 <<(actPtr->dato).getNombreI()<<"\t"
+                 <<(actPtr->dato).getNumeroI()<<"\t"
+                 <<(actPtr->dato).getCorreoI()<<"\t"
+                 <<(actPtr->dato).getCantidad()<<"\t"
+                 <<(actPtr->dato).getInfoGrupo()<<"\t"
+                 <<(actPtr->dato).getEquipo()<<"\t"
+                 <<(actPtr->dato).getFecha()<<"\t"
+                 <<(actPtr->dato).getHoraInicio()<<"\t"
+                 <<(actPtr->dato).getHoraFin()<<"\t"
+                 <<""<<"\t"
                  <<"\n";
         }
         File.close();
@@ -70,20 +70,20 @@ void lista<tipo>::AppendExcel()
     std::ofstream File("export.xls",ios::out|ios::app);
     if (File.is_open())
     {
-        File <<(raizPtr->dato)->getLabSolicitado()
-             <<(raizPtr->dato)->getClase()
-             <<(raizPtr->dato)->getMotivo()
-             <<(raizPtr->dato)->getPerfil()
-             <<(raizPtr->dato)->getNombreI()
-             <<(raizPtr->dato)->getNumeroI()
-             <<(raizPtr->dato)->getCorreoI()
-             <<(raizPtr->dato)->getCantidad()
-             <<(raizPtr->dato)->getInfoGrupo()
-             <<(raizPtr->dato)->getEquipo()
-             <<(raizPtr->dato)->getFecha()
-             <<(raizPtr->dato)->getHoraInicio()
-             <<(raizPtr->dato)->getHoraFin()
-             <<""
+        File <<(raizPtr->dato)->getLabSolicitado()<<"\t"
+             <<(raizPtr->dato)->getClase()<<"\t"
+             <<(raizPtr->dato)->getMotivo()<<"\t"
+             <<(raizPtr->dato)->getPerfil()<<"\t"
+             <<(raizPtr->dato)->getNombreI()<<"\t"
+             <<(raizPtr->dato)->getNumeroI()<<"\t"
+             <<(raizPtr->dato)->getCorreoI()<<"\t"
+             <<(raizPtr->dato)->getCantidad()<<"\t"
+             <<(raizPtr->dato)->getInfoGrupo()<<"\t"
+             <<(raizPtr->dato)->getEquipo()<<"\t"
+             <<(raizPtr->dato)->getFecha()<<"\t"
+             <<(raizPtr->dato)->getHoraInicio()<<"\t"
+             <<(raizPtr->dato)->getHoraFin()<<"\t"
+             <<""<<"\t"
              <<"\n";
         File.close();
         cout << "XLS exportado.\n";

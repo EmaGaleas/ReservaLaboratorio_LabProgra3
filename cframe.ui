@@ -706,32 +706,32 @@
               </item>
               <item>
                <property name="text">
-                <string>Física</string>
+                <string>Fisica</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Máquinas y Herramientas</string>
+                <string>Maquinas y Herramientas</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Electrónica</string>
+                <string>Electronica</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Mecatrónica</string>
+                <string>Mecatronica</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Biomédica</string>
+                <string>Biomedica</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Energía</string>
+                <string>Energia</string>
                </property>
               </item>
               <item>
@@ -751,7 +751,7 @@
               </item>
               <item>
                <property name="text">
-                <string>Química</string>
+                <string>Quimica</string>
                </property>
               </item>
               <item>
@@ -766,7 +766,7 @@
               </item>
               <item>
                <property name="text">
-                <string>Automatización</string>
+                <string>Automatizacion</string>
                </property>
               </item>
               <item>
@@ -786,7 +786,7 @@
               </item>
               <item>
                <property name="text">
-                <string>Inteligencia Artíficial</string>
+                <string>Inteligencia Artificial</string>
                </property>
               </item>
              </widget>
@@ -1166,7 +1166,7 @@
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>5</hour>
+                <hour>11</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2025</year>
@@ -1176,7 +1176,7 @@
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>6</hour>
+                <hour>12</hour>
                 <minute>0</minute>
                 <second>0</second>
                 <year>2023</year>

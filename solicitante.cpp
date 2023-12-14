@@ -91,25 +91,7 @@ void Solicitante::setFecha(const string &newFecha)
     fecha = newFecha;
 }
 
-const string &Solicitante::getHoraInicio() const
-{
-    return horaInicio;
-}
 
-void Solicitante::setHoraInicio(const string &newHoraInicio)
-{
-    horaInicio = newHoraInicio;
-}
-
-const string &Solicitante::getHoraFin() const
-{
-    return horaFin;
-}
-
-void Solicitante::setHoraFin(const string &newHoraFin)
-{
-    horaFin = newHoraFin;
-}
 
 int Solicitante::getCantidad() const
 {
@@ -141,6 +123,27 @@ void Solicitante::setRepetir(int newRepetir)
     repetir = newRepetir;
 }
 
+
+int Solicitante::getHoraInicio() const
+{
+    return horaInicio;
+}
+
+void Solicitante::setHoraInicio(int newHoraInicio)
+{
+    horaInicio = newHoraInicio;
+}
+
+int Solicitante::getHoraFin() const
+{
+    return horaFin;
+}
+
+void Solicitante::setHoraFin(int newHoraFin)
+{
+    horaFin = newHoraFin;
+}
+
 Solicitante::Solicitante()
 {
     this->labSolicitado="";
@@ -154,12 +157,12 @@ Solicitante::Solicitante()
     this->infoGrupo="";
     this->equipo="";
     this->fecha="";
-    this->horaInicio="";
-    this->horaFin="";
-    this->repetir=0;
+    this->horaInicio=NULL;
+    this->horaFin=NULL;
+    this->repetir=NULL;
 }
 
-Solicitante::Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repetir)
+Solicitante::Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,int horaInicio,int horaFin,int repetir)
 {
     this->labSolicitado=labSolicitado;
     this->clase=clase;

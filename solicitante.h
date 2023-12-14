@@ -10,12 +10,13 @@ class Solicitante
 {
 private:
     //labSolicitado,clase,motivo,perfil(que es),nombreI,numeroI,correoI,cantidad,infoGrupo,equipo,fecha,horaInicio,HoraFin
-    string labSolicitado,clase,motivo,perfil,nombreI,correoI, infoGrupo,equipo,fecha,horaInicio,horaFin;
+    string labSolicitado,clase,motivo,perfil,nombreI,correoI, infoGrupo,equipo,fecha;
     int cantidad,repetir;
+    int horaInicio,horaFin;
     double numeroI;
 public:
     Solicitante();
-    Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repetir);
+    Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,int horaInicio,int horaFin,int repetir);
     ~Solicitante();
 
     void Imprimir() const;
@@ -38,16 +39,18 @@ public:
     void setEquipo(const string &newEquipo);
     const string &getFecha() const;
     void setFecha(const string &newFecha);
-    const string &getHoraInicio() const;
-    void setHoraInicio(const string &newHoraInicio);
-    const string &getHoraFin() const;
-    void setHoraFin(const string &newHoraFin);
+
+
     int getCantidad() const;
     void setCantidad(int newCantidad);
     double getNumeroI() const;
     void setNumeroI(double newNumeroI);
     int getRepetir() const;
     void setRepetir(int newRepetir);
+    int getHoraInicio() const;
+    void setHoraInicio(int newHoraInicio);
+    int getHoraFin() const;
+    void setHoraFin(int newHoraFin);
 };
 
 #endif // SOLICITANTE_H

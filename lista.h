@@ -3,6 +3,9 @@
 #include <nodo.h>
 #include <string>
 #include <fstream>
+#include <QFile>
+#include <QTextStream>
+
 using std::ofstream;
 using std::ios;
 using std::string;
@@ -30,6 +33,7 @@ public:
     bool Guardar(string nombre);
     int Cantidad();
 
+    string horas[10] = {"6:45","8:10","9:55","11:15","13:20","14:40","16:00","17:20","18:40","20:00"};
 };
 
 template<typename tipo>
@@ -47,6 +51,9 @@ void lista<tipo>::NewExcel()
             }else if((actPtr->dato).getRepetir()==2){
                 repetir = "SEMANALMENTE";
             }
+            int indexInicio = (actPtr->dato).getHoraInicio();
+            int indexFinal  = (actPtr->dato).getHoraFin();
+
             File <<(actPtr->dato).getLabSolicitado()<<"\t"
                  <<(actPtr->dato).getClase()<<"\t"
                  <<(actPtr->dato).getMotivo()<<"\t"
@@ -58,8 +65,8 @@ void lista<tipo>::NewExcel()
                  <<(actPtr->dato).getInfoGrupo()<<"\t"
                  <<(actPtr->dato).getEquipo()<<"\t"
                  <<(actPtr->dato).getFecha()<<"\t"
-                 <<(actPtr->dato).getHoraInicio()<<"\t"
-                 <<(actPtr->dato).getHoraFin()<<"\t"
+                 <<horas[indexInicio]<<"\t"
+                 <<horas[indexFinal]<<"\t"
                  <<repetir<<"\t"
                  <<"\n";
         }
@@ -97,6 +104,7 @@ void lista<tipo>::AppendExcel()
         std::cerr << "Error en el archivo.\n";
     }
 }
+
 
 template<typename tipo>
 nodo<tipo> *lista<tipo>::NuevoNodo(const tipo &dato)

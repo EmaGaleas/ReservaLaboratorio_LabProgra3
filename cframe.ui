@@ -879,12 +879,12 @@
               </item>
               <item>
                <property name="text">
-                <string>Semanal</string>
+                <string>A diario</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>A diario</string>
+                <string>Semanal</string>
                </property>
               </item>
              </widget>
@@ -998,11 +998,6 @@
                 <pointsize>10</pointsize>
                </font>
               </property>
-              <item>
-               <property name="text">
-                <string>08:10</string>
-               </property>
-              </item>
               <item>
                <property name="text">
                 <string>09:55</string>
@@ -1166,7 +1161,7 @@
               </property>
               <property name="maximumDateTime">
                <datetime>
-                <hour>11</hour>
+                <hour>23</hour>
                 <minute>59</minute>
                 <second>59</second>
                 <year>2025</year>
@@ -1176,7 +1171,7 @@
               </property>
               <property name="minimumDateTime">
                <datetime>
-                <hour>12</hour>
+                <hour>0</hour>
                 <minute>0</minute>
                 <second>0</second>
                 <year>2023</year>

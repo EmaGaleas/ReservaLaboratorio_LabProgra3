@@ -54,7 +54,7 @@ void lista<tipo>::NewExcel()
                  <<(actPtr->dato).getFecha()<<"\t"
                  <<(actPtr->dato).getHoraInicio()<<"\t"
                  <<(actPtr->dato).getHoraFin()<<"\t"
-                 <<""<<"\t"
+                 <<(actPtr->dato).getRepetir()<<"\t"
                  <<"\n";
         }
         File.close();

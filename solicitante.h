@@ -46,6 +46,8 @@ public:
     void setCantidad(int newCantidad);
     double getNumeroI() const;
     void setNumeroI(double newNumeroI);
+    int getRepetir() const;
+    void setRepetir(int newRepetir);
 };
 
 #endif // SOLICITANTE_H

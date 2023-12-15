@@ -589,7 +589,7 @@
            <set>Qt::ImhNoTextHandles</set>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_menu">
            <attribute name="title">
@@ -838,14 +838,14 @@
                 <second>0</second>
                 <year>2023</year>
                 <month>12</month>
-                <day>11</day>
+                <day>15</day>
                </datetime>
               </property>
               <property name="minimumDate">
                <date>
                 <year>2023</year>
                 <month>12</month>
-                <day>11</day>
+                <day>15</day>
                </date>
               </property>
               <property name="calendarPopup">

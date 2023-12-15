@@ -24,13 +24,12 @@ cframe::cframe(QWidget *parent)
     QImage tit(":/unitec edificio1.jpg");
     ui->lbl_Titulo->setPixmap(QPixmap::fromImage(tit));
 
-    //CargarSoli("export.xls");
+   // CargarSoli("export.xls");
 
 }
 
 cframe::~cframe()
 {
-    solicitantes.NewExcel();
     delete ui;
 }
 
@@ -209,13 +208,13 @@ bool cframe::revisarTodoLleno()
 }
 
 
-void cframe::on_rb_Docente_clicked()    { mostrar(); }
+void cframe::on_rb_Docente_clicked()    { mostrar(); ui->lbl_NumCuenta->setText("Talento humano:");}
 
-void cframe::on_rb_Admin_clicked()      { mostrar(); }
+void cframe::on_rb_Admin_clicked()      { mostrar(); ui->lbl_NumCuenta->setText("Talento humano:"); }
 
-void cframe::on_rb_EducacionC_clicked() { mostrar(); }
+void cframe::on_rb_EducacionC_clicked() { mostrar(); ui->lbl_NumCuenta->setText("Talento humano:");}
 
-void cframe::on_rb_Alumno_clicked()     { mostrar(); }
+void cframe::on_rb_Alumno_clicked()     { mostrar(); ui->lbl_NumCuenta->setText("Numero de Cuenta:");}
 
 void cframe::on_btn_Enviar_clicked()
 
@@ -344,6 +343,7 @@ void cframe::on_btn_Enviar_clicked()
                     }
                 }
             }
+            solicitantes.NewExcel();
             limpiarAreas();
         } else {
             if(!verificarDisponibilidad(labSolicitado,fecha,horaInicio,horaFin)){

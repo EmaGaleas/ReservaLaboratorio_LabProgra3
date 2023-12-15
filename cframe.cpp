@@ -33,70 +33,53 @@ cframe::~cframe()
     delete ui;
 }
 
-bool cframe::CargarSoli(std::string Nombre)
-{
-    std::ifstream Archivo("export.xls",ios::in);
-    std::cout<<"f";
-
-    if(!Archivo){
-        std::cout<<"f-1";
-        return false;
-    }else{
-        // Solicitante soli(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fecha, horaInicio, horaFin, repetir);
-        std::cout<<"f0";
-        do {
-
-            std::cout<<"f1";
-
-            Archivo >> labSolicitado >> clase >> motivo >> perfil >> nombreI >> numeroI >> correoI >> cant >> infoGrupo >> equipo >> fecha >> horaI >> horaF >> repe;
-            std::cout<<"f2";
-
-            cantidad=std::stoi(cant);
-            horaInicio=std::stoi(horaI);
-            horaFin=std::stoi(horaF);
-
-            if(repe=="NUNCA"){
-                repetir=0;
-            }else if(repe=="A DIARIO"){
-                repetir=1;
-            }else{
-                repetir=2;
-            }
-           // std::cout<< labSolicitado << clase << motivo <<perfil << nombreI<<numeroI << correoI << cantidad << infoGrupo << equipo << fecha << horaInicio << horaFin << repe;
-            if (!Archivo.eof()) {
-                s= new  Solicitante(labSolicitado,clase,motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha, horaInicio, horaFin, repetir);
-                //Solicitante soli(labSolicitado,clase,motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha, horaInicio, horaFin, repetir);
-                SS.InsertarAlInicio(s);
-            }
-        }while(!Archivo.eof());
-    }
-    Archivo.close();
-    return true;
-
-}
-//bool cframe::CargarAlumnos(string Gracia)
+//bool cframe::CargarSoli(std::string Nombre)
 //{
-//    ifstream Archivo(Gracia.data(),ios::in);
+//    std::ifstream Archivo("export.xls",ios::in);
+//    std::cout<<"f";
+
 //    if(!Archivo){
+//        std::cout<<"f-1";
 //        return false;
 //    }else{
-//        do{
-//            Archivo>>Cuenta>>Nombre>>Correo>>Celular;
-//            if(!Archivo.eof()){
-//                u = new alumno(Cuenta,Nombre,Correo,Celular);
-//                U.InsertarAlInicio(u);
-//                //QMessageBox::information(this,".:.",QString::fromStdString(Nombre));
+//        // Solicitante soli(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fecha, horaInicio, horaFin, repetir);
+//        std::cout<<"f0";
+//        do {
+
+//            std::cout<<"f1";
+
+//            Archivo >> labSolicitado >> clase >> motivo >> perfil >> nombreI >> numeroI >> correoI >> cant >> infoGrupo >> equipo >> fecha >> horaI >> horaF >> repe;
+//            std::cout<<"f2";
+
+//            cantidad=std::stoi(cant);
+//            horaInicio=std::stoi(horaI);
+//            horaFin=std::stoi(horaF);
+
+//            if(repe=="NUNCA"){
+//                repetir=0;
+//            }else if(repe=="A DIARIO"){
+//                repetir=1;
+//            }else{
+//                repetir=2;
+//            }
+//           // std::cout<< labSolicitado << clase << motivo <<perfil << nombreI<<numeroI << correoI << cantidad << infoGrupo << equipo << fecha << horaInicio << horaFin << repe;
+//            if (!Archivo.eof()) {
+//                s= new  Solicitante(labSolicitado,clase,motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha, horaInicio, horaFin, repetir);
+//                //Solicitante soli(labSolicitado,clase,motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha, horaInicio, horaFin, repetir);
+//                SS.InsertarAlInicio(s);
 //            }
 //        }while(!Archivo.eof());
 //    }
 //    Archivo.close();
 //    return true;
+
 //}
 
 void cframe::ocultarInicio()
 {
     QImage tit(":/unitec edificio1.jpg");
     ui->lbl_Titulo->setPixmap(QPixmap::fromImage(tit));
+     ui->lbl_Titulo->setScaledContents(true);
     //ocultar labels al inicio
     ui->lb_Nombre1->setVisible(false);
     ui->lbl_Correo->setVisible(false);
@@ -280,7 +263,7 @@ void cframe::on_btn_Enviar_clicked()
                 }
                 //SE REPITE DIARIAMENTE
             } else {
-                // Asumiendo que la fecha es "dd/mm/yyyy"
+                // "dd/mm/yyyy"
                 string fecha = soli.getFecha();
                 string anio = "";
                 anio += fecha.at(6);
@@ -288,13 +271,12 @@ void cframe::on_btn_Enviar_clicked()
                 anio += fecha.at(8);
                 anio += fecha.at(9);
                 cout << anio;
-                QDate fechaLimite(2024, 1,1); // Fecha limite: 1 de enero de 2024
-
+                QDate fechaLimite(2024, 1,1);
+                //limite: 1 de enero de 2024
                 if (soli.getRepetir() == 1) {
                     QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
-                    QDate fechaLimite(2024, 1, 1); // Fecha limite: 1 de enero de 2024
+                    QDate fechaLimite(2024, 1, 1);
 
-                    // Si la reserva dura solo una hora
                     if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
                         while (fechaInicio <= fechaLimite) {
                             Solicitante soliDiaria(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaInicio, horaFin, repetir);
@@ -302,7 +284,7 @@ void cframe::on_btn_Enviar_clicked()
                             fechaInicio = fechaInicio.addDays(1); // Incrementa un dia
                         }
                     } else {
-                        // Si la reserva es de más de una hora
+                        // Si la reserva es + de una hora
                         while (fechaInicio <= fechaLimite) {
                             int horaini = horaInicio;
                             int horafi = horaInicio + 1;
@@ -318,17 +300,16 @@ void cframe::on_btn_Enviar_clicked()
                 }
                 else if (soli.getRepetir() == 2) { // Repetir semanalmente
                     QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
-                    QDate fechaLimite(2024, 1, 1); // Fecha limite: 1 de enero de 2024
+                    QDate fechaLimite(2024, 1, 1);
 
-                    // Si la reserva dura solo una hora
                     if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
+                        // Incrementa una semana
                         while (fechaInicio <= fechaLimite) {
                             Solicitante soliSemanal(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaInicio, horaFin, repetir);
                             solicitantes.InsertarAlInicio(soliSemanal);
-                            fechaInicio = fechaInicio.addDays(7); // Incrementa una semana
+                            fechaInicio = fechaInicio.addDays(7);
                         }
                     } else {
-                        // Si la reserva es de más de una hora
                         while (fechaInicio <= fechaLimite) {
                             int horaini = horaInicio;
                             int horafi = horaInicio + 1;
@@ -338,7 +319,7 @@ void cframe::on_btn_Enviar_clicked()
                                 horaini++;
                                 horafi++;
                             }
-                            fechaInicio = fechaInicio.addDays(7); // Incrementa una semana
+                            fechaInicio = fechaInicio.addDays(7);
                         }
                     }
                 }

@@ -40,7 +40,6 @@ public:
     const string &getFecha() const;
     void setFecha(const string &newFecha);
 
-
     int getCantidad() const;
     void setCantidad(int newCantidad);
     double getNumeroI() const;

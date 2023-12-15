@@ -42,7 +42,7 @@ void lista<tipo>::NewExcel()
     std::ofstream File("export.xls");
     if (File.is_open())
     {
-        File << "Laboratorio Solicitado\tClase\tMotivo\tPerfil\tNombreI\tNumeroI\tCorreoI\tCantidad\tInfoGrupo\tEquipo\tFecha\tHora de Inicio\tHora de Finalizacion\tRepeticion\n";
+        File << "Laboratorio Solicitado\tClase\tMotivo\tPerfil\tNombre\tNumero\tCorreo\tCantidad\tInformacion del Grupo\tEquipo a utilizar\tFecha de reservacion\tHora de Inicio\tHora de Finalizacion\tRepeticion\n";
         for ( nodo< tipo > *actPtr = raizPtr; actPtr!=0; actPtr = actPtr->SigPtr )
         {
             string repetir = "NUNCA";

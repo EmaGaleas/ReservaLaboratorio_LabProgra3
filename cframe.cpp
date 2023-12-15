@@ -20,6 +20,7 @@ cframe::cframe(QWidget *parent)
 
 cframe::~cframe()
 {
+    solicitantes.NewExcel();
     delete ui;
 }
 
@@ -168,9 +169,17 @@ void cframe::on_btn_Enviar_clicked()
         string labSolicitado = ui->cbox_labSolicitado->currentText().toStdString();
         string clase = ui->led_Clase->text().toStdString();
         string motivo = ui->led_Motivo->text().toStdString();
-        //perfil ya esta definidio
         string nombreI = ui->led_NombreIndi->text().toStdString();
         double numeroI = ui->led_NumCuentaIndi->text().toDouble();
+        std::string strNumeroI = std::to_string(numeroI);
+
+        // Eliminar cualquier punto decimal y dígitos posteriores
+        size_t puntoDecimal = strNumeroI.find('.');
+        if (puntoDecimal != std::string::npos) {
+            strNumeroI = strNumeroI.substr(0, puntoDecimal);
+        }
+
+
         string correoI = ui->led_Correo->text().toStdString();
         int cantidad = ui->spinB_NumeroIntegrantes->text().toInt();
         string infoGrupo = ui->led_NombresGrupo->text().toStdString();
@@ -179,112 +188,136 @@ void cframe::on_btn_Enviar_clicked()
         int horaInicio = ui->cbox_HoraInicio->currentIndex();
         int horaFin = ui->cbox_HoraFin->currentIndex()+2;
 
+        cout<<horaInicio-horaFin;
         //string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repetir
         Solicitante soli(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fecha, horaInicio, horaFin, repetir);
-        //NUNCA SE REPITE
-        if(soli.getRepetir() == 0){
-            //las horas de reserva son largas
-            if((soli.getHoraFin()) - (soli.getHoraInicio()) > 1){
-                int horaini = soli.getHoraInicio();
-                int horafi = soli.getHoraFin();
-                while(horafi!=soli.getHoraFin()){
-                    Solicitante soli2(labSolicitado, clase, motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha,horaini,horafi,repetir);
-                    horaini++;
-                    horafi++;
-                    solicitantes.InsertarAlInicio(soli2);
-                }
-                //if de si la hora de reserva nada mas es una y nunca se repite
-            }else if(soli.getHoraFin() - soli.getHoraInicio() == 1){
-                solicitantes.InsertarAlInicio(soli);
-            }
-            //SE REPITE DIARIAMENTE
-        } else {
-            // Asumiendo que la fecha es "dd/mm/yyyy"
-            string fecha = soli.getFecha();
-            string anio = "";
-            anio += fecha.at(6);
-            anio += fecha.at(7);
-            anio += fecha.at(8);
-            anio += fecha.at(9);
-            cout << anio;
-            QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
-            QDate fechaLimite(2024, 1,1); // Fecha límite: 1 de enero de 2024
+        if(strNumeroI.length()==8 && esCorreoUnitec(correoI) && verificarDisponibilidad(labSolicitado,fecha,horaInicio,horaFin) && horaFin>horaInicio){
 
-            if (soli.getRepetir() == 1) {
-                QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
-                QDate fechaLimite(2024, 1, 1); // Fecha límite: 1 de enero de 2024
-
-                // Si la reserva dura solo una hora
-                if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
-                    while (fechaInicio <= fechaLimite) {
-                        Solicitante soliDiaria(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaInicio, horaFin, repetir);
-                        solicitantes.InsertarAlInicio(soliDiaria);
-                        fechaInicio = fechaInicio.addDays(1); // Incrementa un día
+            //NUNCA SE REPITE
+            if(soli.getRepetir() == 0){
+                //las horas de reserva son largas
+                if((soli.getHoraFin()) - (soli.getHoraInicio()) > 1){
+                    int horaini = soli.getHoraInicio();
+                    int horafi = soli.getHoraInicio()+1;
+                    while(horafi!=soli.getHoraFin()){
+                        Solicitante soli2(labSolicitado, clase, motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha,horaini,horafi,repetir);
+                        horaini++;
+                        horafi++;
+                        solicitantes.InsertarAlInicio(soli2);
                     }
-                } else {
-                    // Si la reserva es de más de una hora
-                    while (fechaInicio <= fechaLimite) {
-                        int horaini = horaInicio;
-                        int horafi = horaInicio + 1;
-                        while (horafi <= horaFin) {
-                            Solicitante soliDiaria(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaini, horafi, repetir);
+                    //if de si la hora de reserva nada mas es una y nunca se repite
+                }else if(soli.getHoraFin() - soli.getHoraInicio() == 1){
+                    solicitantes.InsertarAlInicio(soli);
+                }
+                //SE REPITE DIARIAMENTE
+            } else {
+                // Asumiendo que la fecha es "dd/mm/yyyy"
+                string fecha = soli.getFecha();
+                string anio = "";
+                anio += fecha.at(6);
+                anio += fecha.at(7);
+                anio += fecha.at(8);
+                anio += fecha.at(9);
+                cout << anio;
+                QDate fechaLimite(2024, 1,1); // Fecha límite: 1 de enero de 2024
+
+                if (soli.getRepetir() == 1) {
+                    QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
+                    QDate fechaLimite(2024, 1, 1); // Fecha límite: 1 de enero de 2024
+
+                    // Si la reserva dura solo una hora
+                    if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
+                        while (fechaInicio <= fechaLimite) {
+                            Solicitante soliDiaria(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaInicio, horaFin, repetir);
                             solicitantes.InsertarAlInicio(soliDiaria);
-                            horaini++;
-                            horafi++;
+                            fechaInicio = fechaInicio.addDays(1); // Incrementa un día
                         }
-                        fechaInicio = fechaInicio.addDays(1); // Incrementa un día
+                    } else {
+                        // Si la reserva es de más de una hora
+                        while (fechaInicio <= fechaLimite) {
+                            int horaini = horaInicio;
+                            int horafi = horaInicio + 1;
+                            while (horafi <= horaFin) {
+                                Solicitante soliDiaria(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaini, horafi, repetir);
+                                solicitantes.InsertarAlInicio(soliDiaria);
+                                horaini++;
+                                horafi++;
+                            }
+                            fechaInicio = fechaInicio.addDays(1); // Incrementa un día
+                        }
                     }
                 }
-            }
-            else if (soli.getRepetir() == 2) { // Repetir semanalmente
-                QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
-                QDate fechaLimite(2024, 1, 1); // Fecha límite: 1 de enero de 2024
+                else if (soli.getRepetir() == 2) { // Repetir semanalmente
+                    QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
+                    QDate fechaLimite(2024, 1, 1); // Fecha límite: 1 de enero de 2024
 
-                // Si la reserva dura solo una hora
-                if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
-                    while (fechaInicio <= fechaLimite) {
-                        Solicitante soliSemanal(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaInicio, horaFin, repetir);
-                        solicitantes.InsertarAlInicio(soliSemanal);
-                        fechaInicio = fechaInicio.addDays(7); // Incrementa una semana
-                    }
-                } else {
-                    // Si la reserva es de más de una hora
-                    while (fechaInicio <= fechaLimite) {
-                        int horaini = horaInicio;
-                        int horafi = horaInicio + 1;
-                        while (horafi <= horaFin) {
-                            Solicitante soliSemanal(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaini, horafi, repetir);
+                    // Si la reserva dura solo una hora
+                    if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
+                        while (fechaInicio <= fechaLimite) {
+                            Solicitante soliSemanal(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaInicio, horaFin, repetir);
                             solicitantes.InsertarAlInicio(soliSemanal);
-                            horaini++;
-                            horafi++;
+                            fechaInicio = fechaInicio.addDays(7); // Incrementa una semana
                         }
-                        fechaInicio = fechaInicio.addDays(7); // Incrementa una semana
+                    } else {
+                        // Si la reserva es de más de una hora
+                        while (fechaInicio <= fechaLimite) {
+                            int horaini = horaInicio;
+                            int horafi = horaInicio + 1;
+                            while (horafi <= horaFin) {
+                                Solicitante soliSemanal(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaini, horafi, repetir);
+                                solicitantes.InsertarAlInicio(soliSemanal);
+                                horaini++;
+                                horafi++;
+                            }
+                            fechaInicio = fechaInicio.addDays(7); // Incrementa una semana
+                        }
                     }
                 }
             }
+            limpiarAreas();
+        } else {
+            if(!verificarDisponibilidad(labSolicitado,fecha,horaInicio,horaFin)){
+                ui->lbl_LlenarTodo->setText("EL LABORATORIO ESCOGIDO ESTA OCUPADO");
+            }
+            else if(!esCorreoUnitec(correoI)){
+                ui->lbl_LlenarTodo->setText("EL CORREO NO ESTA EN EL FORMATO DESEADO");
+            } else if (horaInicio >= horaFin){
+                ui->lbl_LlenarTodo->setText("LAS HORAS DE INICIO Y FINAL NO ESTAN BIEN ESCOGIDAS");
+            } else if (std::to_string(numeroI).length()!=8){
+                ui->lbl_LlenarTodo->setText("EL NUMERO DE CUENTA NO ES DE 8 CARACTERES");
+            }
+             ui->lbl_LlenarTodo->setVisible(true);
         }
-        limpiarAreas();
     }else{
         ui->lbl_LlenarTodo->setText("DEBE LLENAR TODOS LOS ESPACIOS");
         ui->lbl_LlenarTodo->setVisible(true);
     }
 }
 
-bool cframe::verificarDisponibilidad(string laboratorio, const string& fecha, int horaInicioIndex, int horaFinIndex) {
-    int c = 0;
-    for(nodo<Solicitante>* actual = solicitantes.raizPtr; actual!=nullptr; actual = actual->SigPtr){
-        if((actual->dato).getLabSolicitado() == laboratorio &&(actual->dato).getFecha()==fecha){
+bool cframe::esCorreoUnitec(const string &correo)
+{
+    std::string dominio = "unitec.edu";
+    // Buscar la posición del '@'
+    size_t posicionArroba = correo.find('@');
 
-        }
+    // Verificar si '@' está en el correo y si el dominio coincide
+    if (posicionArroba != std::string::npos) {
+        std::string dominioCorreo = correo.substr(posicionArroba + 1);
+        return dominioCorreo == dominio;
     }
-    if(c==solicitantes.Cant){
-        return true;
-    }
+
     return false;
 }
 
-void cframe::on_pushButton_clicked()
-{
-    solicitantes.NewExcel();
+bool cframe::verificarDisponibilidad(string laboratorio, const string& fecha, int horaInicioIndex, int horaFinIndex) {
+    for (nodo<Solicitante>* actual = solicitantes.raizPtr; actual != nullptr; actual = actual->SigPtr) {
+        Solicitante& reservaActual = actual->dato;
+        if (reservaActual.getLabSolicitado() == laboratorio && reservaActual.getFecha() == fecha) {
+            // Verificar si las horas se solapan
+            if (!(horaInicioIndex >= reservaActual.getHoraFin() || horaFinIndex <= reservaActual.getHoraInicio())) {
+                return false; // Se encontró un solapamiento
+            }
+        }
+    }
+    return true; // No se encontraron solapamientos, el laboratorio está disponible
 }
-

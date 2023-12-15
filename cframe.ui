@@ -234,8 +234,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1081</width>
-         <height>860</height>
+         <width>1077</width>
+         <height>849</height>
         </rect>
        </property>
        <property name="palette">
@@ -589,7 +589,7 @@
            <set>Qt::ImhNoTextHandles</set>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="tab_menu">
            <attribute name="title">
@@ -1122,23 +1122,6 @@
               </property>
              </widget>
             </item>
-            <item row="0" column="0" colspan="5">
-             <widget class="QLabel" name="lbl_Titulo">
-              <property name="font">
-               <font>
-                <family>Nirmala UI</family>
-                <pointsize>22</pointsize>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>FORMULARIO</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
             <item row="14" column="0">
              <widget class="QLabel" name="lbl_HoraFin">
               <property name="font">
@@ -1294,6 +1277,27 @@
               </property>
              </widget>
             </item>
+            <item row="0" column="0" colspan="5">
+             <widget class="QLabel" name="lbl_Titulo">
+              <property name="font">
+               <font>
+                <family>Nirmala UI</family>
+                <pointsize>22</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </widget>
@@ -1311,7 +1315,7 @@
      <x>0</x>
      <y>0</y>
      <width>1101</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuRESERVACION_LABORATORIO">

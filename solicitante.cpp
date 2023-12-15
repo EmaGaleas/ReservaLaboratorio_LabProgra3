@@ -103,15 +103,6 @@ void Solicitante::setCantidad(int newCantidad)
     cantidad = newCantidad;
 }
 
-double Solicitante::getNumeroI() const
-{
-    return numeroI;
-}
-
-void Solicitante::setNumeroI(double newNumeroI)
-{
-    numeroI = newNumeroI;
-}
 
 int Solicitante::getRepetir() const
 {
@@ -144,6 +135,16 @@ void Solicitante::setHoraFin(int newHoraFin)
     horaFin = newHoraFin;
 }
 
+const string &Solicitante::getNumeroI() const
+{
+    return numeroI;
+}
+
+void Solicitante::setNumeroI(const string &newNumeroI)
+{
+    numeroI = newNumeroI;
+}
+
 Solicitante::Solicitante()
 {
     this->labSolicitado="";
@@ -151,7 +152,7 @@ Solicitante::Solicitante()
     this->motivo="";
     this->perfil="";
     this->nombreI="";
-    this->numeroI=0;
+    this->numeroI="";
     this->correoI="";
     this->cantidad=0;
     this->infoGrupo="";
@@ -162,7 +163,7 @@ Solicitante::Solicitante()
     this->repetir=NULL;
 }
 
-Solicitante::Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,int horaInicio,int horaFin,int repetir)
+Solicitante::Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,string numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,int horaInicio,int horaFin,int repetir)
 {
     this->labSolicitado=labSolicitado;
     this->clase=clase;

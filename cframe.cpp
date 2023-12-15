@@ -3,6 +3,11 @@
 #include <QImage>
 #include <QPixmap>
 #include <QLabel>
+#include <istream>
+#include <iostream>
+#include <string>
+#include <sstream>
+
 
 cframe::cframe(QWidget *parent)
     : QMainWindow(parent)
@@ -16,6 +21,11 @@ cframe::cframe(QWidget *parent)
     QImage menu(":/0.png");
     ui->lbl_info->setPixmap(QPixmap::fromImage(info));
     ui->lbl_menu->setPixmap(QPixmap::fromImage(menu));
+    QImage tit(":/unitec edificio1.jpg");
+    ui->lbl_Titulo->setPixmap(QPixmap::fromImage(tit));
+
+    //CargarSoli("export.xls");
+
 }
 
 cframe::~cframe()
@@ -24,8 +34,70 @@ cframe::~cframe()
     delete ui;
 }
 
+bool cframe::CargarSoli(std::string Nombre)
+{
+    std::ifstream Archivo("export.xls",ios::in);
+    std::cout<<"f";
+
+    if(!Archivo){
+        std::cout<<"f-1";
+        return false;
+    }else{
+        // Solicitante soli(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fecha, horaInicio, horaFin, repetir);
+        std::cout<<"f0";
+        do {
+
+            std::cout<<"f1";
+
+            Archivo >> labSolicitado >> clase >> motivo >> perfil >> nombreI >> numeroI >> correoI >> cant >> infoGrupo >> equipo >> fecha >> horaI >> horaF >> repe;
+            std::cout<<"f2";
+
+            cantidad=std::stoi(cant);
+            horaInicio=std::stoi(horaI);
+            horaFin=std::stoi(horaF);
+
+            if(repe=="NUNCA"){
+                repetir=0;
+            }else if(repe=="A DIARIO"){
+                repetir=1;
+            }else{
+                repetir=2;
+            }
+           // std::cout<< labSolicitado << clase << motivo <<perfil << nombreI<<numeroI << correoI << cantidad << infoGrupo << equipo << fecha << horaInicio << horaFin << repe;
+            if (!Archivo.eof()) {
+                s= new  Solicitante(labSolicitado,clase,motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha, horaInicio, horaFin, repetir);
+                //Solicitante soli(labSolicitado,clase,motivo,perfil,nombreI, numeroI,correoI,cantidad,infoGrupo,equipo,fecha, horaInicio, horaFin, repetir);
+                SS.InsertarAlInicio(s);
+            }
+        }while(!Archivo.eof());
+    }
+    Archivo.close();
+    return true;
+
+}
+//bool cframe::CargarAlumnos(string Gracia)
+//{
+//    ifstream Archivo(Gracia.data(),ios::in);
+//    if(!Archivo){
+//        return false;
+//    }else{
+//        do{
+//            Archivo>>Cuenta>>Nombre>>Correo>>Celular;
+//            if(!Archivo.eof()){
+//                u = new alumno(Cuenta,Nombre,Correo,Celular);
+//                U.InsertarAlInicio(u);
+//                //QMessageBox::information(this,".:.",QString::fromStdString(Nombre));
+//            }
+//        }while(!Archivo.eof());
+//    }
+//    Archivo.close();
+//    return true;
+//}
+
 void cframe::ocultarInicio()
 {
+    QImage tit(":/unitec edificio1.jpg");
+    ui->lbl_Titulo->setPixmap(QPixmap::fromImage(tit));
     //ocultar labels al inicio
     ui->lb_Nombre1->setVisible(false);
     ui->lbl_Correo->setVisible(false);
@@ -56,6 +128,9 @@ void cframe::ocultarInicio()
 
 void cframe::mostrar()
 {
+    QImage tit(":/unitec negro.png");
+    ui->lbl_Titulo->setPixmap(QPixmap::fromImage(tit));
+    ui->lbl_Titulo->setScaledContents(false);
     //mostrar labels al inicio
     ui->lb_Nombre1->setVisible(true);
     ui->lbl_Correo->setVisible(true);
@@ -170,16 +245,12 @@ void cframe::on_btn_Enviar_clicked()
         string clase = ui->led_Clase->text().toStdString();
         string motivo = ui->led_Motivo->text().toStdString();
         string nombreI = ui->led_NombreIndi->text().toStdString();
-        double numeroI = ui->led_NumCuentaIndi->text().toDouble();
-        std::string strNumeroI = std::to_string(numeroI);
-
+        string numeroI = ui->led_NumCuentaIndi->text().toStdString();
         // Eliminar cualquier punto decimal y dígitos posteriores
-        size_t puntoDecimal = strNumeroI.find('.');
+        size_t puntoDecimal = numeroI.find('.');
         if (puntoDecimal != std::string::npos) {
-            strNumeroI = strNumeroI.substr(0, puntoDecimal);
+            numeroI = numeroI.substr(0, puntoDecimal);
         }
-
-
         string correoI = ui->led_Correo->text().toStdString();
         int cantidad = ui->spinB_NumeroIntegrantes->text().toInt();
         string infoGrupo = ui->led_NombresGrupo->text().toStdString();
@@ -189,10 +260,9 @@ void cframe::on_btn_Enviar_clicked()
         int horaFin = ui->cbox_HoraFin->currentIndex()+2;
 
         cout<<horaInicio-horaFin;
-        //string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repetir
+        //string labSolicitado,string clase,string motivo,string perfil,string nombreI,string numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,string horaInicio,string horaFin,int repetir
         Solicitante soli(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fecha, horaInicio, horaFin, repetir);
-        if(strNumeroI.length()==8 && esCorreoUnitec(correoI) && verificarDisponibilidad(labSolicitado,fecha,horaInicio,horaFin) && horaFin>horaInicio){
-
+        if(numeroI.length()==8 && esCorreoUnitec(correoI) && verificarDisponibilidad(labSolicitado,fecha,horaInicio,horaFin) && horaFin>horaInicio){
             //NUNCA SE REPITE
             if(soli.getRepetir() == 0){
                 //las horas de reserva son largas
@@ -219,18 +289,18 @@ void cframe::on_btn_Enviar_clicked()
                 anio += fecha.at(8);
                 anio += fecha.at(9);
                 cout << anio;
-                QDate fechaLimite(2024, 1,1); // Fecha límite: 1 de enero de 2024
+                QDate fechaLimite(2024, 1,1); // Fecha limite: 1 de enero de 2024
 
                 if (soli.getRepetir() == 1) {
                     QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
-                    QDate fechaLimite(2024, 1, 1); // Fecha límite: 1 de enero de 2024
+                    QDate fechaLimite(2024, 1, 1); // Fecha limite: 1 de enero de 2024
 
                     // Si la reserva dura solo una hora
                     if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
                         while (fechaInicio <= fechaLimite) {
                             Solicitante soliDiaria(labSolicitado, clase, motivo, perfil, nombreI, numeroI, correoI, cantidad, infoGrupo, equipo, fechaInicio.toString("dd/MM/yyyy").toStdString(), horaInicio, horaFin, repetir);
                             solicitantes.InsertarAlInicio(soliDiaria);
-                            fechaInicio = fechaInicio.addDays(1); // Incrementa un día
+                            fechaInicio = fechaInicio.addDays(1); // Incrementa un dia
                         }
                     } else {
                         // Si la reserva es de más de una hora
@@ -243,13 +313,13 @@ void cframe::on_btn_Enviar_clicked()
                                 horaini++;
                                 horafi++;
                             }
-                            fechaInicio = fechaInicio.addDays(1); // Incrementa un día
+                            fechaInicio = fechaInicio.addDays(1); // Incrementa un dia
                         }
                     }
                 }
                 else if (soli.getRepetir() == 2) { // Repetir semanalmente
                     QDate fechaInicio = QDate::fromString(QString::fromStdString(soli.getFecha()), "dd/MM/yyyy");
-                    QDate fechaLimite(2024, 1, 1); // Fecha límite: 1 de enero de 2024
+                    QDate fechaLimite(2024, 1, 1); // Fecha limite: 1 de enero de 2024
 
                     // Si la reserva dura solo una hora
                     if (soli.getHoraFin() - soli.getHoraInicio() == 1) {
@@ -283,10 +353,10 @@ void cframe::on_btn_Enviar_clicked()
                 ui->lbl_LlenarTodo->setText("EL CORREO NO ESTA EN EL FORMATO DESEADO");
             } else if (horaInicio >= horaFin){
                 ui->lbl_LlenarTodo->setText("LAS HORAS DE INICIO Y FINAL NO ESTAN BIEN ESCOGIDAS");
-            } else if (std::to_string(numeroI).length()!=8){
+            } else if (numeroI.length()!=8){
                 ui->lbl_LlenarTodo->setText("EL NUMERO DE CUENTA NO ES DE 8 CARACTERES");
             }
-             ui->lbl_LlenarTodo->setVisible(true);
+            ui->lbl_LlenarTodo->setVisible(true);
         }
     }else{
         ui->lbl_LlenarTodo->setText("DEBE LLENAR TODOS LOS ESPACIOS");
@@ -297,10 +367,8 @@ void cframe::on_btn_Enviar_clicked()
 bool cframe::esCorreoUnitec(const string &correo)
 {
     std::string dominio = "unitec.edu";
-    // Buscar la posición del '@'
     size_t posicionArroba = correo.find('@');
-
-    // Verificar si '@' está en el correo y si el dominio coincide
+    // Verificar @ y si el dominio coincide
     if (posicionArroba != std::string::npos) {
         std::string dominioCorreo = correo.substr(posicionArroba + 1);
         return dominioCorreo == dominio;
@@ -315,9 +383,11 @@ bool cframe::verificarDisponibilidad(string laboratorio, const string& fecha, in
         if (reservaActual.getLabSolicitado() == laboratorio && reservaActual.getFecha() == fecha) {
             // Verificar si las horas se solapan
             if (!(horaInicioIndex >= reservaActual.getHoraFin() || horaFinIndex <= reservaActual.getHoraInicio())) {
-                return false; // Se encontró un solapamiento
+                return false; // no se puede
             }
         }
     }
-    return true; // No se encontraron solapamientos, el laboratorio está disponible
+    return true;
 }
+
+

@@ -10,13 +10,12 @@ class Solicitante
 {
 private:
     //labSolicitado,clase,motivo,perfil(que es),nombreI,numeroI,correoI,cantidad,infoGrupo,equipo,fecha,horaInicio,HoraFin
-    string labSolicitado,clase,motivo,perfil,nombreI,correoI, infoGrupo,equipo,fecha;
+    string labSolicitado,clase,motivo,perfil,nombreI,correoI, infoGrupo,equipo,fecha,numeroI;
     int cantidad,repetir;
     int horaInicio,horaFin;
-    double numeroI;
 public:
     Solicitante();
-    Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,double numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,int horaInicio,int horaFin,int repetir);
+    Solicitante(string labSolicitado,string clase,string motivo,string perfil,string nombreI,string numeroI,string correoI,int cantidad,string infoGrupo,string equipo,string fecha,int horaInicio,int horaFin,int repetir);
     ~Solicitante();
 
     void Imprimir() const;
@@ -42,14 +41,14 @@ public:
 
     int getCantidad() const;
     void setCantidad(int newCantidad);
-    double getNumeroI() const;
-    void setNumeroI(double newNumeroI);
     int getRepetir() const;
     void setRepetir(int newRepetir);
     int getHoraInicio() const;
     void setHoraInicio(int newHoraInicio);
     int getHoraFin() const;
     void setHoraFin(int newHoraFin);
+    const string &getNumeroI() const;
+    void setNumeroI(const string &newNumeroI);
 };
 
 #endif // SOLICITANTE_H
